@@ -79,19 +79,26 @@ public class MessageController {
 
 
     @PostMapping("/chat")
-    public String sendMessage(@RequestParam("receiverId") Long receiverId,
+    public String sendMessage(@RequestParam("receiver") String receiver,
                               @RequestParam("msg_text") String msgText,
-                              Principal principal) {
-        User sender = userRepository.findByEmail(principal.getName());
-        Favorites receiver = favoritesRepository.findById(receiverId).orElseThrow();
+                              HttpSession session) {
+        Long currentUserId = (Long) session.getAttribute("userId");
+        User sender = userService.findById(currentUserId).get();
+        System.out.println(sender);
+        System.out.println(sender.getId());
+        User u = userRepository.findByEmail(receiver);
+        System.out.println(u);
+        System.out.println(u.getId());
+        Favorites fav = favoritesRepository.findByLikedByAndLikedUser(sender.getId(),u.getId()).stream().findFirst().get();
+        System.out.println(fav);
 
         Message message = new Message();
         message.setSender(sender);
-        message.setReceiver(receiver);
+        message.setReceiver(fav);
         message.setMsg_text(msgText);
         System.out.println(message);
         messageRepository.save(message);
 
-        return "redirect:/chat?receiverId=" + receiverId;
+        return "redirect:/chat?receiver=" + receiver;
     }
 }
