@@ -95,6 +95,8 @@ public class FavoritesController {
             System.out.println(new Favorites(status,whoLiked, likedUser.get()));
             favoritesRepository.save(new Favorites(status, whoLiked, likedUser.get()));
             //favoritesService.saveFavorites(likedBy.getId(), likedUser.get().getId(), status);
+            model.addAttribute("receiverId", likedUser.get().getId());
+            model.addAttribute("receiver", likedUser.get());
         }
         model.addAttribute("success", "Favorites updated successfully.");
         return "redirect:/favorites";
