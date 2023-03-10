@@ -1,6 +1,5 @@
 package com.example.registrationlogindemo.dto;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

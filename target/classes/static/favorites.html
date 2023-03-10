@@ -8,7 +8,7 @@
 </head>
 <body>
 <header class="main-header">
-  <a href="./main-page.html" class="main-header-logo"><img src="img/iba-tech-logo-white.svg" alt="IBA Tech Academy"></a>
+  <a href="mainpage" class="main-header-logo"><img src="img/iba-tech-logo-white.svg" alt="IBA Tech Academy"></a>
   <div class="main-header-wrapper">
     <label class="main-header-search-wrapper">
       <input type="search" class="main-header-search" placeholder="Add new profile">
@@ -30,7 +30,7 @@
           <li class="hidden-accordion-item">
             <a href="my-profile" class="hidden-accordion-item-link">
               <img class="hidden-accordion-item-image" src="img/user-icon-gray.svg" alt="User Icon">Profile</a></li>
-          <li class="hidden-accordion-item"><a href="favorites.html" class="hidden-accordion-item-link">
+          <li class="hidden-accordion-item"><a href="favorites" class="hidden-accordion-item-link">
             <img class="hidden-accordion-item-image" src="img/favourite-icon.svg" alt="Favourite Icon">
             Favorites</a></li>
           <li class="hidden-accordion-item">
@@ -75,7 +75,7 @@
       <p class="favourites-card-description">
         <span>Liked</span>
       </p>
-      <a href="chat.html" class="favourites-message-button"><img class="favourites-message-button-icon" src="./img/mail-icon.svg" alt="mail icon">Message</a>
+      <a href="chat" class="favourites-message-button"><img class="favourites-message-button-icon" src="./img/mail-icon.svg" alt="mail icon">Message</a>
       <form th:data-user-id="${user.id}" th:action="@{/favorites/remove}" method="post">
         <input type="hidden" name="userId" th:value="${user.id}" />
         <input type="hidden" name="status" value="liked" />

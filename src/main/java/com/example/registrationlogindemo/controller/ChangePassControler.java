@@ -41,7 +41,6 @@ public class ChangePassControler {
         String password = request.getOldPassword();
         String newPassword = request.getNewPassword();
         String confirmPassword = request.getConfirmPassword();
-//        String pass= user.setPassword(password);
         log.info("girildi change post");
         boolean isAuthenticated =
                 passwordEncoder.matches(request.getOldPassword(),userService.findByEmail(email).getPassword()
@@ -51,7 +50,6 @@ public class ChangePassControler {
         log.info(password);
         log.info(newPassword);
         log.info(confirmPassword);
-        System.out.println(isAuthenticated);
         if (!(password.isEmpty() && newPassword.isEmpty() && confirmPassword.isEmpty()))
         {
             if (isAuthenticated) {
@@ -61,7 +59,6 @@ public class ChangePassControler {
             } else {
                 log.info("yanlış giriş yapıldığını bildiren bir hata mesajı gösterin");
                 return new RedirectView("/my-profile");
-                //           "/login?error=true"
             }
         }
         else{
